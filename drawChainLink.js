@@ -2,6 +2,22 @@ function drawChainLink(ctx, xCen=0, yCen=0, xScale = 50, yScale = 50) {
 	let x, y;
 	let xc1, xc2, yc1, yc2, xDir, yDir;
 
+	function bezierCurveTo(ctx, xc1, yc1, xc2, yc2, x, y, rotate) {
+		if(rotate) {
+			ctx.bezierCurveTo(yc1, xc1, yc2, xc2, y, x);
+		} else {
+			ctx.bezierCurveTo(xc1, yc1, xc2, yc2, x, y);
+		}
+	}
+
+	function lineTo(ctx, x, y, rotate) {
+		if(rotate) {
+			ctx.lineTo(y, x);
+		} else {
+			ctx.lineTo(x, y);
+		}
+
+	}
 	function drawQuarter(xDir, yDir, rotate) {
 		ctx.beginPath();
 		if(rotate) {
@@ -15,47 +31,28 @@ function drawChainLink(ctx, xCen=0, yCen=0, xScale = 50, yScale = 50) {
 		}
 
 		y -= 2 * yDir * yScale;
-		if(rotate) {
-			ctx.lineTo(y, x);
-		} else {
-			ctx.lineTo(x, y);
-		}
+		lineTo(ctx, x, y, rotate);
 
 		xc1 = x;
 		yc1 = y - yDir * yScale*2/3;
 		yc2 = y - yDir * yScale*2/3;
 		x += xDir * xScale;
 		xc2 = x;
-		if(rotate) {
-			ctx.bezierCurveTo(yc1, xc1, yc2, xc2, y, x);
-		} else {
-			ctx.bezierCurveTo(xc1, yc1, xc2, yc2, x, y);
-		}
+		bezierCurveTo(ctx, xc1, yc1, xc2, yc2, x, y, rotate);
 
 		x = x + xDir * xScale;
-		if(rotate) {
-			ctx.lineTo(y, x);
-		} else {
-			ctx.lineTo(x, y);
-		}
+		lineTo(ctx, x, y, rotate);
 
 		xc1 = x;
 		yc1 = y - yDir * yScale * 2;
 		yc2 = yc1;
 		x = x - 3 * xDir *  xScale;
 		xc2 = x;
-		if(rotate) {
-			ctx.bezierCurveTo(yc1, xc1, yc2, xc2, y, x);
-		} else {
-			ctx.bezierCurveTo(xc1, yc1, xc2, yc2, x, y);
-		}
+		bezierCurveTo(ctx, xc1, yc1, xc2, yc2, x, y, rotate);
 
 		y = y + 2 * yDir * yScale;
-		if(rotate) {
-			ctx.lineTo(y, x);
-		} else {
-			ctx.lineTo(x, y);
-		}
+		lineTo(ctx, x, y, rotate);
+		
 		ctx.closePath();
 
 		ctx.fill();
