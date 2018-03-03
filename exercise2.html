@@ -9,9 +9,9 @@
 		<canvas id="asteroids" width="400" height="400"></canvas>
 		<script src="drawGrid.js"></script>
 		<script src="exercise2.js"></script>
+		<script src="drawChainLink.js"></script>
 		<script>
 			var canvas = document.getElementById('asteroids');
-			console.log(canvas.getContext('webgl'));
 			var context = canvas.getContext('2d');
 			let points = [
 				{x: 50, y: 50},
@@ -19,8 +19,8 @@
 				{x: 250, y: 170}
 			];
 			drawGrid(context);
-			drawExercise(context);
-
+			// drawExercise(context);
+			drawChainLink(context, 175, 225);
 
 		</script>
 	</body>
