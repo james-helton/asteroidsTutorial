@@ -8,10 +8,48 @@
 		<h1>Welcome to Asteroids!!</h1>
 		<canvas id="asteroids" width="400" height="400"></canvas>
 		<script src="drawGrid.js"></script>
+		<script src="drawStar.js"></script>
 		<script>
 			var canvas = document.getElementById('asteroids');
+			console.log(canvas.getContext('webgl'));
 			var context = canvas.getContext('2d');
+			let points = [
+				{x: 50, y: 50},
+				{x: 150, y: 250},
+				{x: 250, y: 170}
+			];
 			drawGrid(context);
+			context.beginPath();
+			context.strokeStyle = '#FFF';
+			context.fillStyle = '#0F0';
+			context.lineWidth = 2;
+			context.moveTo(points[0].x, points[0].y);
+			context.lineTo(points[1].x, points[1].y);
+			context.lineTo(points[2].x, points[2].y);
+			context.fillText(`(${points[0].x},${points[0].y})`, points[0].x-20, points[0].y-5);
+			context.fillText(`(${points[1].x},${points[1].y})`, points[1].x-20, points[1].y+15);
+			context.fillText(`(${points[2].x},${points[2].y})`, points[2].x+5, points[2].y+5);
+			context.lineTo(320, 280);
+			context.closePath();
+			context.stroke();
+
+			context.beginPath()
+			context.moveTo(50, 250);
+			context.lineTo(50, 350);
+			context.lineTo(150, 350);
+			context.closePath();
+			context.moveTo(230, 360);
+			context.lineTo(270, 360);
+			context.lineTo(270, 310);
+			context.closePath();
+			context.moveTo(250, 50);
+			context.lineTo(370, 50);
+			context.lineTo(370, 100);
+			context.closePath();
+			context.strokeStyle = "#FFFF00";
+			context.fillStyle = "#000000";
+			context.fill();
+			context.stroke();
 		</script>
 	</body>
 </html>
