@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+		<title>ASTEROIDS</title>
+		<style media="screen">
+			body {
+				text-align: center;
+				font-family: sans-serif;
+			}
+			canvas {
+				background-color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Welcome to Asteroids!!</h1>
+		<canvas id="asteroids" width="400" height="400"></canvas>
+		<script>
+			var canvas = document.getElementById('asteroids');
+			var context = canvas.getContext('2d');
+			// canvas.addEventListener('click', (d) => {
+			// 	console.log('Alt Key:', d.altKey);
+			// 	console.log('Ctrl Key:', d.ctrlKey);
+			// 	console.log('Cmd Key:', d.metaKey);
+			// });
+			context.strokeStyle = 'lightgrey';
+			context.fillStyle = 'dimgrey';
+			context.lineWidth = 5;
+			context.rect(75, 50, canvas.width - 150, canvas.width - 100);
+			context.stroke();
+			context.fill();
+
+			context.font = "34px arial";
+			context.strokeStyle = 'red'
+			context.fillStyle = 'black';
+			context.lineWidth = 0.75;
+			context.textAlign = 'center';
+			let msg = '2d Drawing';
+			context.fillText(msg, canvas.width/2, 100)
+			context.strokeText(msg, canvas.width/2, 100);
+			msg = "It's quite easy";
+			context.font = "24px Arial";
+			context.fillText(msg, canvas.width/2, 330);
+			context.strokeText(msg, canvas.width/2, 330);
+
+			context.strokeStyle = '#FFFFFF';
+			context.lineWidth = 2;
+			context.beginPath();
+			context.arc(200, 140, 20, 0, Math.PI * 2);
+			context.moveTo(200, 160);
+			context.lineTo(200, 220);
+			context.moveTo(180, 300);
+			context.lineTo(185, 260);
+			context.lineTo(200, 220);
+			context.lineTo(215, 260);
+			context.lineTo(220, 300);
+			context.moveTo(240, 130);
+			context.lineTo(225, 170);
+			context.lineTo(200, 170);
+			context.lineTo(175, 180);
+			context.lineTo(170, 220);
+			context.stroke();
+		</script>
+	</body>
+</html>
