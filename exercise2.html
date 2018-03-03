@@ -23,6 +23,7 @@
 			context.strokeStyle = '#FFF';
 			context.fillStyle = '#0F0';
 			context.lineWidth = 2;
+
 			context.moveTo(points[0].x, points[0].y);
 			context.lineTo(points[1].x, points[1].y);
 			context.lineTo(points[2].x, points[2].y);
@@ -33,23 +34,48 @@
 			context.closePath();
 			context.stroke();
 
-			context.beginPath()
+
+			context.beginPath();
+
 			context.moveTo(50, 250);
-			context.lineTo(50, 350);
-			context.lineTo(150, 350);
+			context.quadraticCurveTo(25, 300, 50, 350);
+			context.quadraticCurveTo(100, 325, 150, 350);
+			context.quadraticCurveTo(150, 300, 100, 300);
+			context.quadraticCurveTo(50, 300, 50, 250);
 			context.closePath();
+
 			context.moveTo(230, 360);
 			context.lineTo(270, 360);
 			context.lineTo(270, 310);
 			context.closePath();
+
 			context.moveTo(250, 50);
 			context.lineTo(370, 50);
 			context.lineTo(370, 100);
 			context.closePath();
 			context.strokeStyle = "#FFFF00";
 			context.fillStyle = "#000000";
+
+			context.moveTo(150,50);
+			context.lineTo(150,100);
+			context.lineTo(200,100);
+			context.lineTo(200,50);
+			context.lineTo(150,50);
+
 			context.fill();
 			context.stroke();
+
+			context.beginPath();
+
+			context.moveTo(150,50);
+			context.bezierCurveTo(187, 75, 112, 75, 150, 100);
+			context.bezierCurveTo(150, 137, 200, 137, 200, 100);
+			context.bezierCurveTo(237, 125, 237, 25, 200, 50);
+			context.bezierCurveTo(175, 12, 175, 12, 150, 50);
+
+			context.strokeStyle="#F00";
+			context.stroke();
+
 		</script>
 	</body>
 </html>
