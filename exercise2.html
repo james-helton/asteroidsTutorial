@@ -1,26 +1,85 @@
 <!doctype html>
 <html>
 	<head>
-		<title>ASTEROIDS</title>
+		<title >ASTEROIDS</title>
 		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
-		<h1>Welcome to Asteroids!!</h1>
-		<canvas id="asteroids" width="400" height="400"></canvas>
+		<h1 id="header">Welcome to Asteroids!!</h1>
+		<div>
+			<canvas id="asteroids" width="400" height="400"></canvas>
+		</div>
+		<div>
+			<label>Number of points</label>
+			<input id='numPoints' placeholder='Number of points' type='text' />
+		</div>
+		<div>
+			<label>Number of points to skip</label>
+			<input id='skipPoints' placeholder='Number of points to skip' type='text' />
+		</div>
+		<div>
+			<button onclick=calculateStar()>Calculate Star</button>
+		</div>
+		<div>
+			<button onclick=displayChain()>Draw Chain Link</button>
+		</div>
+		<div>
+			<button onclick=displayEss()>Draw Cool S</button>
+		</div>
+		<div>
+			<button onclick=displayEx2()>Draw Exercise 2</button>
+		</div>
 		<script src="drawGrid.js"></script>
+		<script src="drawStar.js"></script>
 		<script src="exercise2.js"></script>
 		<script src="drawChainLink.js"></script>
+		<script src="drawEss.js"></script>
 		<script>
 			var canvas = document.getElementById('asteroids');
 			var context = canvas.getContext('2d');
+			function clearContext() {
+				context.clearRect(0, 0, canvas.width, canvas.height);
+				drawGrid(context);
+			}
+
+			function displayChain() {
+				clearContext();
+				drawChainLink(context);
+			}
+
+			function displayEss() {
+				clearContext();
+				drawEss(context);
+			}
+
+			function displayEx2() {
+				clearContext();
+				drawExercise(context);
+			}
+
+			function calculateStar() {
+				numPoints = parseInt(document.getElementById('numPoints').value)
+				skipPoints = parseInt(document.getElementById('skipPoints').value)
+				if(!numPoints) {
+					numPoints = 5;
+					document.getElementById('numPoints').value = numPoints
+				}
+				if(!skipPoints) {
+					skipPoints = 2;
+					document.getElementById('skipPoints').value = skipPoints
+				}
+				context.clearRect(0, 0, canvas.width, canvas.height);
+				drawGrid(context);
+				drawStar(context, skipPoints * (360.0 / numPoints), numPoints)
+				document.getElementById('header').innerHTML =`Star with ${numPoints} points`
+			}
+
 			let points = [
 				{x: 50, y: 50},
 				{x: 150, y: 250},
 				{x: 250, y: 170}
 			];
-			drawGrid(context);
-			// drawExercise(context);
-			drawChainLink(context, 175, 225);
+			calculateStar();
 
 		</script>
 	</body>

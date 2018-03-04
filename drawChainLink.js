@@ -1,4 +1,4 @@
-function drawChainLink(ctx, xCen=0, yCen=0, xScale = 50, yScale = 50) {
+function drawChainLink(ctx, xCen=200, yCen=200, xScale = 50, yScale = 50) {
 	let x, y;
 	let xc1, xc2, yc1, yc2, xDir, yDir;
 
@@ -18,7 +18,7 @@ function drawChainLink(ctx, xCen=0, yCen=0, xScale = 50, yScale = 50) {
 		}
 
 	}
-	
+
 	function drawQuarter(xDir, yDir, rotate) {
 		ctx.beginPath();
 		if(rotate) {
