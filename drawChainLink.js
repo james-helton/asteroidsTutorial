@@ -18,6 +18,7 @@ function drawChainLink(ctx, xCen=0, yCen=0, xScale = 50, yScale = 50) {
 		}
 
 	}
+	
 	function drawQuarter(xDir, yDir, rotate) {
 		ctx.beginPath();
 		if(rotate) {
@@ -52,7 +53,7 @@ function drawChainLink(ctx, xCen=0, yCen=0, xScale = 50, yScale = 50) {
 
 		y = y + 2 * yDir * yScale;
 		lineTo(ctx, x, y, rotate);
-		
+
 		ctx.closePath();
 
 		ctx.fill();
@@ -60,49 +61,6 @@ function drawChainLink(ctx, xCen=0, yCen=0, xScale = 50, yScale = 50) {
 	}
 
 	ctx.save();
-
-	ctx.strokeStyle="white";
-	// ctx.beginPath();
-	// ctx.moveTo(xCen + xScale/2, yCen + yScale/2);
-	// ctx.lineTo(xCen + xScale/2, yCen - yScale/2);
-	// ctx.lineTo(xCen - xScale/2, yCen - yScale/2);
-	// ctx.lineTo(xCen - xScale/2, yCen + yScale/2);
-	// ctx.closePath();
-	// ctx.stroke();
-
-	// xDir = 1;
-	// yDir = 1;
-	// ctx.beginPath();
-	// x = xCen - xDir * xScale/2;
-	// y = yCen + yDir * yScale/2;
-	// ctx.moveTo(x, y);
-
-	// y -= 2 * xDir * yScale;
-	// ctx.lineTo(x, y);
-
-	// xc1 = x;
-	// yc1 = y - xDir * yScale*2/3;
-	// yc2 = y - yDir * yScale*2/3;
-	// x += xDir * xScale;
-	// xc2 = x;
-	// ctx.bezierCurveTo(xc1, yc1, xc2, yc2, x, y);
-
-	// x = x + xDir * xScale;
-	// ctx.lineTo(x, y);
-
-	// xc1 = x;
-	// yc1 = y - yDir * yScale * 2;
-	// yc2 = yc1;
-	// x = x - 3 * xDir *  xScale;
-	// xc2 = x;
-	// ctx.bezierCurveTo(xc1, yc1, xc2, yc2, x, y);
-
-	// y = y + 2 * yDir * yScale;
-	// ctx.lineTo(x, y);
-	// ctx.closePath();
-
-	// ctx.fill();
-	// ctx.stroke();
 
 	ctx.strokeStyle="grey";
 	ctx.fillStyle="grey";
@@ -112,11 +70,6 @@ function drawChainLink(ctx, xCen=0, yCen=0, xScale = 50, yScale = 50) {
 	ctx.fillStyle="white";
 	drawQuarter(1, 1);
 	drawQuarter(-1, -1);
-
-
-
-
-
 
 	ctx.restore();
 }
