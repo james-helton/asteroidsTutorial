@@ -62,12 +62,12 @@
 				skipPoints = parseInt(document.getElementById('skipPoints').value)
 				if(!numPoints) {
 					numPoints = 5;
-					document.getElementById('numPoints').value = numPoints
 				}
+				document.getElementById('numPoints').value = numPoints
 				if(!skipPoints) {
 					skipPoints = 2;
-					document.getElementById('skipPoints').value = skipPoints
 				}
+				document.getElementById('skipPoints').value = skipPoints
 				context.clearRect(0, 0, canvas.width, canvas.height);
 				drawGrid(context);
 				drawStar(context, skipPoints * (360.0 / numPoints), numPoints)
