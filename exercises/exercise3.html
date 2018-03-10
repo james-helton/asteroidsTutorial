@@ -12,11 +12,14 @@
 			var cvs = document.getElementById('main');
 			var ctx = cvs.getContext('2d');
 			drawGrid(ctx);
+			let minRad = 5;
+			let maxRad = 50;
 			do{
 				let x = cvs.width * Math.random();
 				let y = cvs.height * Math.random();
-				drawPacman(ctx, x, y, 150 * Math.random(), Math.random());
-			} while(Math.random() < 0.98);
+				let rad = minRad + (maxRad - minRad) * Math.random();
+				drawPacman(ctx, x, y, rad, Math.random());
+			} while(Math.random() < 0.95);
 		</script>
 	</body>
 </html>
