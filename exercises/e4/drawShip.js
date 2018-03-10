@@ -1,4 +1,4 @@
-function drawShip(ctx, r, options = {}) {
+function drawShip(ctx, options = {}) {
 	ctx.save();
 
 	// options = options || {};
@@ -6,6 +6,7 @@ function drawShip(ctx, r, options = {}) {
 	let rotation = options.shipAngle || 0;
 	let x = options.x || 0;
 	let y = options.y || 0;
+	let r = options.r || 50;
 	ctx.translate(x, y)
 	ctx.rotate(rotation);
 

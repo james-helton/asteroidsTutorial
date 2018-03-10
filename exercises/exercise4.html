@@ -12,11 +12,16 @@
 			var cvs = document.getElementById('main');
 			var ctx = cvs.getContext('2d');
 			let xSize = ctx.canvas.width * 0.1;
-			let y = 0;
+			let x, y, sa;
+			// let y = 0;
 			let radius = ctx.canvas.width * 0.1;
 			drawGrid(ctx);
 			for(let r = 0; r <= 10; r++) {
-				drawShip(ctx, radius, {guide: true, shipAngle: r * 0.05 * Math.PI, x: r * xSize, y: r * xSize});
+				x = r * xSize;
+				y = r * xSize;
+				sa = r * 0.05 * Math.PI;
+
+				drawShip(ctx, {guide: true, shipAngle: sa, x: x, y: y, r: radius});
 			}
 			// drawShip(ctx, 200, 200, 150, {guide: true});
 			// drawShip(ctx, 75, 75, 50, {stroke: 'gold', fill: 'purple', shipAngle: 0.125 * Math.PI});
