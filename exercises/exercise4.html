@@ -8,7 +8,69 @@
 	</head>
 	<body>
 		<canvas id="main" width="400" height="400"></canvas>
+		<div>
+			<label>Radius</label>
+			<input id='radius' type='text' placeholder='Try 1 through 200' />
+		</div>
+		<div>
+			<label>X Position</label>
+			<input id='xpos' type='text' placeholder='Try 1 through 400' />
+		</div>
+		<div>
+			<label>Y Position</label>
+			<input id='ypos' type='text' placeholder='Try 1 through 400' />
+		</div>
+		<div>
+			<label>Ship Direction</label>
+			<input id='sa' type='text' placeholder='Try 0 through 360' />
+		</div>
+		<div>
+			<label>Ship width</label>
+			<input id='ba' type='text' placeholder='Try 0.00 through 2.00' />
+		</div>
+		<div>
+			<label>Side curve</label>
+			<input id='c2' type='text' placeholder='Try 0.00 through 1.00' />
+		</div>
+		<div>
+			<label>Rear curve</label>
+			<input id='c1' type='text' placeholder='Try 0.00 through 1.00' />
+		</div>
+		<div>
+			<label>Show Guide</label>
+			<input id='guide' type='checkbox' checked=true/>
+		</div>
+		<div>
+			<button onclick=calcShip()>Draw Ship</button>
+		</div>
 		<script>
+			function clearContext(ctx) {
+				ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+				drawGrid(ctx);
+			}
+
+			function calcShip() {
+				radius = parseInt(document.getElementById('radius').value) || 50;
+				xpos = parseInt(document.getElementById('xpos').value) || 200;
+				ypos = parseInt(document.getElementById('ypos').value) || 200;
+				sa = parseInt(document.getElementById('sa').value) || 0;
+				ba = parseFloat(document.getElementById('ba').value) || 1.5;
+				c2 = parseFloat(document.getElementById('c2').value) || 0.75;
+				c1 = parseFloat(document.getElementById('c1').value) || 0.6;
+				guide = document.getElementById('guide').checked;
+				document.getElementById('radius').value = radius;
+				document.getElementById('xpos').value = xpos;
+				document.getElementById('ypos').value = ypos;
+				document.getElementById('sa').value = sa;
+				document.getElementById('ba').value = ba;
+				document.getElementById('c2').value = c2;
+				document.getElementById('c1').value = c1;
+
+				clearContext(ctx);
+				drawShip(ctx, {guide: guide, x: xpos, y: ypos, r: radius, c1: c1, c2: c2, sa: sa * Math.PI / 180, ba: ba });
+
+			}
+
 			var cvs = document.getElementById('main');
 			var ctx = cvs.getContext('2d');
 			let w = ctx.canvas.width, h = ctx.canvas.height;
@@ -16,18 +78,7 @@
 
 			drawGrid(ctx);
 
-			// for(y = h/20; y < h; y += h/10) {
-			// 	for (x = w/20; x < w; x += w/10) {
-
-			// 		drawShip(ctx, {guide: true, sa: sa, x: x, y: y, r: r});
-			// 		sa += (0.0075 * Math.PI);
-			// 	}
-			// }
-			drawShip(ctx, {guide: true, x: 200, y: 200, r: 150, c1: 0.75, c2: 0.75});
-			// drawShip(ctx, 75, 75, 50, {stroke: 'gold', fill: 'purple', shipAngle: 0.125 * Math.PI});
-			// drawShip(ctx, 325, 325, 50, {pointAngle: 0.2 * Math.PI});
-			// drawShip(ctx, 75, 325, 50, {pointAngle: 1.15 * Math.PI, guide: true});
-			// drawShip(ctx, 325, 75, 50, {lineWidth: 10, fill: 'red', pointAngle: 1.4 * Math.PI});
+			drawShip(ctx, {guide: true, x: 200, y: 200, r: 150, c1: Math.random(), c2: Math.random()});
 		</script>
 	</body>
 </html>

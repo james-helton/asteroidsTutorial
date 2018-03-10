@@ -24,6 +24,7 @@ function drawShip(ctx, options = {}) {
 	let x = options.x || 0;
 	let y = options.y || 0;
 	let r = options.r || 50;
+	let pointAngle = (options.ba || 0.5 * Math.PI) / 2;
 	let c1 = options.c1 || 0.25;
 	let c2 = options.c2 || 0.75;
 	ctx.translate(x, y)
@@ -42,7 +43,6 @@ function drawShip(ctx, options = {}) {
 	ctx.lineWidth = options.lineWidth || 2;
 	ctx.strokeStyle = options.stroke || 'white';
 	ctx.fillStyle = options.fill || 'black';
-	let pointAngle = (options.ba || 0.5 * Math.PI) / 2;
 	ctx.beginPath();
 	ctx.moveTo(0 + r, 0);
 	ctx.quadraticCurveTo(
