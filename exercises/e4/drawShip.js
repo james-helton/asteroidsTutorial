@@ -5,6 +5,7 @@ function drawShip(ctx, options = {}) {
 	 *          x:	x location                      *
 	 *          y:	y location                      *
 	 *          r:	radius                          *
+	 *.         c:  curve                           *
 	 *         sa:	ship angle (direction)          *
 	 *         ba:	body angle (size)               *
 	 *      guide:	whether guide bubble displays   *
@@ -22,6 +23,7 @@ function drawShip(ctx, options = {}) {
 	let x = options.x || 0;
 	let y = options.y || 0;
 	let r = options.r || 50;
+	let c = options.c || 0.5;
 	ctx.translate(x, y)
 	ctx.rotate(rotation);
 
@@ -45,13 +47,26 @@ function drawShip(ctx, options = {}) {
 		0 + Math.cos(Math.PI - pointAngle) * r,
 		0 + Math.sin(Math.PI - pointAngle) * r
 	);
-	ctx.lineTo(
+	ctx.quadraticCurveTo(
+		r * c - r, 0,
 		0 + Math.cos(Math.PI + pointAngle) * r,
 		0 + Math.sin(Math.PI + pointAngle) * r
 	);
 	ctx.closePath();
 	ctx.fill();
 	ctx.stroke();
+
+	if(options.guide) {
+		ctx.strokeStyle = 'white';
+		ctx.lineWidth = 0.5;
+		ctx.beginPath();
+		ctx.moveTo(-r, 0);
+		ctx.lineTo(0, 0);
+		ctx.stroke();
+		ctx.beginPath();
+		ctx.arc(r * c - r, 0, r/50, 0, 2 * Math.PI);
+		ctx.stroke();
+	}
 
 	ctx.restore();
 }
