@@ -3,6 +3,9 @@ function drawShip(ctx, x, y, r, options = {}) {
 
 	// options = options || {};
 
+	let rotation = options.shipAngle || 0;
+	ctx.rotate(rotation);
+
 	if(options.guide) {
 		ctx.strokeStyle = 'white';
 		ctx.fillStyle = 'rgba(0,0,0,0.25)';
@@ -16,17 +19,16 @@ function drawShip(ctx, x, y, r, options = {}) {
 	ctx.lineWidth = options.lineWidth || 2;
 	ctx.strokeStyle = options.stroke || 'white';
 	ctx.fillStyle = options.fill || 'black';
-	let angle = (options.angle || 0.5 * Math.PI) / 2;
-
+	let pointAngle = (options.pointAngle || 0.5 * Math.PI) / 2;
 	ctx.beginPath();
 	ctx.moveTo(x + r, y);
 	ctx.lineTo(
-		x + Math.cos(Math.PI - angle) * r,
-		y + Math.sin(Math.PI - angle) * r
+		x + Math.cos(Math.PI - pointAngle) * r,
+		y + Math.sin(Math.PI - pointAngle) * r
 	);
 	ctx.lineTo(
-		x + Math.cos(Math.PI + angle) * r,
-		y + Math.sin(Math.PI + angle) * r
+		x + Math.cos(Math.PI + pointAngle) * r,
+		y + Math.sin(Math.PI + pointAngle) * r
 	);
 	ctx.closePath();
 	ctx.fill();
