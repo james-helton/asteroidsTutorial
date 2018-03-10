@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Exercise 5 - Asteroid</title>
+		<link rel="stylesheet" href="./styles/styles.css" />
+		<script src="./js/drawGrid.js"> </script>
+		<script src="./e5/drawAsteroid.js"></script>
+	</head>
+	<body>
+		<h1>Exercise 5: Asteroid!!</h1>
+		<canvas id='asteroids' width='400' height='400'></canvas>
+		<script>
+			let ctx = document.getElementById('asteroids').getContext('2d');
+			drawGrid(ctx);
+			drawAsteroid(ctx, {segments: 5});
+		</script>
+	</body>
+</html>
