@@ -1,9 +1,24 @@
 function drawShip(ctx, options = {}) {
+
+	/*      options array:                          *
+	 *                                              *
+	 *          x:	x location                      *
+	 *          y:	y location                      *
+	 *          r:	radius                          *
+	 *         sa:	ship angle (direction)          *
+	 *         ba:	body angle (size)               *
+	 *      guide:	whether guide bubble displays   *
+	 *  lineWidth:	Outline line width              *
+	 *     stroke:	Stroke style                    *
+	 *       fill:	Fill style                      *
+	 *                                              *
+	 *                                              */
+
 	ctx.save();
 
 	// options = options || {};
 
-	let rotation = options.shipAngle || 0;
+	let rotation = options.sa || 0;
 	let x = options.x || 0;
 	let y = options.y || 0;
 	let r = options.r || 50;
@@ -23,7 +38,7 @@ function drawShip(ctx, options = {}) {
 	ctx.lineWidth = options.lineWidth || 2;
 	ctx.strokeStyle = options.stroke || 'white';
 	ctx.fillStyle = options.fill || 'black';
-	let pointAngle = (options.pointAngle || 0.5 * Math.PI) / 2;
+	let pointAngle = (options.ba || 0.5 * Math.PI) / 2;
 	ctx.beginPath();
 	ctx.moveTo(0 + r, 0);
 	ctx.lineTo(
