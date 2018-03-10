@@ -4,19 +4,19 @@
 		<title>Exercise 3</title>
 		<link rel="stylesheet" href="./styles/styles.css" />
 		<script src="./js/drawGrid.js"></script>
+		<script src="./e3/drawPacman.js"></script>
 	</head>
 	<body>
 		<canvas id="main" width="400" height="400"></canvas>
 		<script>
 			var cvs = document.getElementById('main');
 			var ctx = cvs.getContext('2d');
-			drawGrid(ctx, cvs)
-			ctx.beginPath();
-			ctx.arc(200, 200, 150, 0.2 * Math.PI, 1.8 * Math.PI);
-			ctx.lineTo(200, 200);
-			ctx.fillStyle = 'yellow';
-			ctx.fill();
-			ctx.stroke();
+			drawGrid(ctx);
+			do{
+				let x = cvs.width * Math.random();
+				let y = cvs.height * Math.random();
+				drawPacman(ctx, x, y, 150 * Math.random(), Math.random());
+			} while(Math.random() < 0.98);
 		</script>
 	</body>
 </html>

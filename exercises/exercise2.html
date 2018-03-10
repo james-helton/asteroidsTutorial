@@ -39,7 +39,7 @@
 			var context = canvas.getContext('2d');
 			function clearContext() {
 				context.clearRect(0, 0, canvas.width, canvas.height);
-				drawGrid(context, canvas);
+				drawGrid(context);
 			}
 
 			function displayChain() {
@@ -69,7 +69,7 @@
 				}
 				document.getElementById('skipPoints').value = skipPoints
 				context.clearRect(0, 0, canvas.width, canvas.height);
-				drawGrid(context, canvas);
+				drawGrid(context);
 				drawStar(context, skipPoints * (360.0 / numPoints), numPoints)
 				document.getElementById('header').innerHTML =`Star with ${numPoints} points`
 			}
