@@ -14,8 +14,8 @@ function drawShip(ctx, x, y, r, options = {}) {
 	}
 
 	ctx.lineWidth = options.lineWidth || 2;
-	ctx.strokeStyle = options.strokeStyle || 'white';
-	ctx.fillStyle = options.fillStyle || 'black';
+	ctx.strokeStyle = options.stroke || 'white';
+	ctx.fillStyle = options.fill || 'black';
 	let angle = (options.angle || 0.5 * Math.PI) / 2;
 
 	ctx.beginPath();

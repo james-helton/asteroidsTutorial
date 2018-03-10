@@ -13,6 +13,10 @@
 			var ctx = cvs.getContext('2d');
 			drawGrid(ctx);
 			drawShip(ctx, 200, 200, 150, {guide: true});
+			drawShip(ctx, 75, 75, 50, {stroke: 'gold', fill: 'purple'});
+			drawShip(ctx, 325, 325, 50, {angle: 0.2 * Math.PI});
+			drawShip(ctx, 75, 325, 50, {angle: 1.15 * Math.PI, guide: true});
+			drawShip(ctx, 325, 75, 50, {lineWidth: 10, fill: 'red', angle: 1.4 * Math.PI});
 		</script>
 	</body>
 </html>
