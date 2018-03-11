@@ -12,7 +12,10 @@
 		<script>
 			let ctx = document.getElementById('asteroids').getContext('2d');
 			drawGrid(ctx);
-			drawAsteroid(ctx, {segments: 5});
+			drawAsteroid(ctx, {x: 100, y: 100, segments: 15, noise: 0.5, guide: true});
+			drawAsteroid(ctx, {x: 300, y: 100, segments: 15, noise: 0.5, guide: true});
+			drawAsteroid(ctx, {x: 300, y: 300, segments: 15, noise: 0.5, guide: true});
+			drawAsteroid(ctx, {x: 100, y: 300, segments: 15, noise: 0.5, guide: true});
 		</script>
 	</body>
 </html>
