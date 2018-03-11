@@ -55,9 +55,12 @@
 				xpos = parseInt(document.getElementById('xpos').value) || 200;
 				ypos = parseInt(document.getElementById('ypos').value) || 200;
 				sa = parseInt(document.getElementById('sa').value) || 0;
-				ba = parseFloat(document.getElementById('ba').value) || 1.5;
-				c2 = parseFloat(document.getElementById('c2').value) || 0.75;
-				c1 = parseFloat(document.getElementById('c1').value) || 0.6;
+				ba = parseFloat(document.getElementById('ba').value);
+				ba = (ba || ba == 0) ? ba : 1.5;
+				c2 = parseFloat(document.getElementById('c2').value);
+				c2 = (c2 || c2 == 0) ? c2 : 0.75;
+				c1 = parseFloat(document.getElementById('c1').value);
+				c1 = (c1 || c1 == 0) ? c1 : 0.6;
 				guide = document.getElementById('guide').checked;
 				document.getElementById('radius').value = radius;
 				document.getElementById('xpos').value = xpos;

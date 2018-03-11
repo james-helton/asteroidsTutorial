@@ -24,9 +24,9 @@ function drawShip(ctx, options = {}) {
 	let x = options.x || 200;
 	let y = options.y || 200;
 	let r = options.r || 50;
-	let pointAngle = (options.ba || 0.5 * Math.PI) / 2;
-	let c1 = options.c1 || 0.25;
-	let c2 = options.c2 || 0.75;
+	let pointAngle = (options.ba || options.ba == 0) ? (options.ba) / 2 : (0.5 * Math.PI) / 2;
+	let c1 = (options.c1 || options.c1 == 0) ? options.c1 : 0.25;
+	let c2 = (options.c2 || options.c2 == 0) ? options.c2 : 0.75;
 	ctx.translate(x, y)
 	ctx.rotate(rotation);
 
