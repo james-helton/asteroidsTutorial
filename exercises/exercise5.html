@@ -12,10 +12,26 @@
 		<script>
 			let ctx = document.getElementById('asteroids').getContext('2d');
 			drawGrid(ctx);
-			drawAsteroid(ctx, {x: 100, y: 100, segments: 15, noise: 0.5, guide: true});
-			drawAsteroid(ctx, {x: 300, y: 100, segments: 15, noise: 0.5, guide: true});
-			drawAsteroid(ctx, {x: 300, y: 300, segments: 15, noise: 0.5, guide: true});
-			drawAsteroid(ctx, {x: 100, y: 300, segments: 15, noise: 0.5, guide: true});
+
+			let iterations = 9;
+			let spacing = ctx.canvas.width / iterations;
+			let radius = spacing / 2 * 0.7;
+
+			let asteroidShape = generateAsteroidShape(10);
+			let noiseDifference = 1 / (iterations * iterations);
+			let noise = noiseDifference;
+
+			for(let y = spacing / 2; y <= (ctx.canvas.width + 1 - spacing / 2); y += spacing) {
+				for(let x = spacing / 2; x <= (ctx.canvas.width + 1 - spacing / 2); x += spacing) {
+					drawAsteroid(ctx, {x: x, y: y, rad: radius, noise: noise, guide: true, shape: asteroidShape});
+					noise += noiseDifference;
+				}
+			}
+
+			// drawAsteroid(ctx, {x: 100, y: 100, r: radius, noise: 0.9, guide: true, shape: asteroidShape});
+			// drawAsteroid(ctx, {x: 300, y: 100, r: radius, noise: 0.2, guide: true, shape: asteroidShape});
+			// drawAsteroid(ctx, {x: 300, y: 300, r: radius, noise: 0.1, guide: true, shape: asteroidShape});
+			// drawAsteroid(ctx, {x: 100, y: 300, r: radius, noise: 0.7, guide: true, shape: asteroidShape});
 		</script>
 	</body>
 </html>
