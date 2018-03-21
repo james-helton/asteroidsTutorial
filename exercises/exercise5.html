@@ -17,14 +17,28 @@
 			let spacing = ctx.canvas.width / iterations;
 			let radius = spacing / 2 * 0.7;
 
-			let asteroidShape = generateAsteroidShape(10);
+			let asteroidShape = generateAsteroidShape(16);
 			let noiseDifference = 1 / (iterations * iterations);
+			let angleDifference = 2 * Math.PI / (iterations * iterations);
 			let noise = noiseDifference;
+			let angle = angleDifference;
 
 			for(let y = spacing / 2; y <= (ctx.canvas.width + 1 - spacing / 2); y += spacing) {
 				for(let x = spacing / 2; x <= (ctx.canvas.width + 1 - spacing / 2); x += spacing) {
-					drawAsteroid(ctx, {x: x, y: y, rad: radius, noise: noise, guide: true, shape: asteroidShape});
+					drawAsteroid(
+						ctx,
+						{
+							x: x,
+							y: y,
+							r: radius,
+							a: angle,
+							noise: noise,
+							guide: true,
+							shape: asteroidShape
+						}
+					);
 					noise += noiseDifference;
+					angle += angleDifference;
 				}
 			}
 
