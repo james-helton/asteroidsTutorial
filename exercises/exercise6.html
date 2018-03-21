@@ -29,7 +29,9 @@
 			function draw(ctx) {
 				drawGrid(ctx);
 				ctx.beginPath();
-				ctx.arc(x, y, 40, 0, 2 * Math.PI);
+				ctx.arc(Math.sin(2*(x+30)*Math.PI / 180)*30+150, Math.cos(2*(x-40)*Math.PI / 180)*30+150, 40, 0, 2 * Math.PI);
+				// ctx.arc(x, Math.cos(2*x*Math.PI / 180)*30+150, 40, 0, 2 * Math.PI);
+				// ctx.arc(Math.sin(2*x*Math.PI / 180)*30+150, Math.cos(2*x*Math.PI / 180)*30+150, 40, 0, 2 * Math.PI);
 				ctx.fill();
 				ctx.stroke();
 			}
