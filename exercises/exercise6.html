@@ -16,6 +16,7 @@
 
 			var x = 0, y = context.canvas.height / 2.0;
 			var ySpeed = 1, gravity = 0.1;
+			let radius = 40;
 
 			function frame() {
 				context.clearRect(0, 0, context.canvas.width, context.canvas.height);
@@ -28,16 +29,16 @@
 				// ySpeed += gravity;
 				ySpeed += gravity;
 				y += ySpeed;
-				if(y > context.canvas.height) {
+				if(y > context.canvas.height - radius) {
 					ySpeed *= (-0.95)
-					y = context.canvas.height;
+					y = context.canvas.height - radius;
 				}
 			}
 
 			function draw(ctx) {
 				drawGrid(ctx);
 				ctx.beginPath();
-				ctx.arc(x, y, 40, 0, 2 * Math.PI);
+				ctx.arc(x, y, radius, 0, 2 * Math.PI);
 				// ctx.arc(x, Math.cos(2*x*Math.PI / 180)*30+150, 40, 0, 2 * Math.PI);
 				// ctx.arc(Math.sin(2*x*Math.PI / 180)*30+150, Math.cos(2*x*Math.PI / 180)*30+150, 40, 0, 2 * Math.PI);
 				ctx.fill();
