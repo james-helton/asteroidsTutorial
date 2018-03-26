@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Exercise 7: Asteroid Animation</title>
+		<link rel="stylesheet" href="styles/styles.css" />
+		<script src="js/drawGrid.js"></script>
+		<script src="e7/drawAsteroid.js"></script>
+	</head>
+	<body>
+		<h1>Animation</h1>
+		<canvas id='asteroids' width='300' height='300'></canvas>
+		<label>FPS:</label>
+		<input id='fps' type='text' />
+
+		<script>
+			let context = document.getElementById('asteroids').getContext('2d');
+
+			let shape = generateAsteroidShape(24);
+			let radius = 50;
+			let noise = 0.2;
+
+			let x = context.canvas.width * Math.random();
+			let y = context.canvas.height * Math.random();
+			let angle = 0;
+
+			let xSpeed = context.canvas.width * (Math.random() - 0.5);
+			let ySpeed = context.canvas.height * (Math.random() - 0.5);
+			let rotSpeed = 2 * Math.PI * (Math.random() - 0.5);
+
+			let previous, elapsed;
+
+			const draw = (ctx, guide) => {
+				if(guide) {drawGrid(ctx);}
+				drawAsteroid(
+					ctx,
+					{
+						x: x,
+						y: y,
+						r: radius,
+						a: angle,
+						noise: noise,
+						shape: shape,
+						guide: guide,
+					}
+				);
+			};
+
+			const update = (elapsed) => {
+				document.getElementById('fps').value = (1/elapsed);
+				if(x - radius + elapsed * xSpeed > context.canvas.width) {x = -radius;}
+				if(x + radius + elapsed * xSpeed < 0) {x = context.canvas.width + radius;}
+				if(y - radius + elapsed * ySpeed > context.canvas.height) {y = -radius;}
+				if(y + radius + elapsed * ySpeed < 0) {y = context.canvas.height + radius;}
+				x += elapsed * xSpeed;
+				y += elapsed * ySpeed;
+				angle = (angle + elapsed * rotSpeed) % (2 * Math.PI);
+			};
+
+			const frame = (timestamp) => {
+				context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+				if(!previous) previous = timestamp;
+				elapsed = timestamp - previous;
+				update(elapsed / 1000);
+				draw(context, true);
+				previous = timestamp;
+				window.requestAnimationFrame(frame);
+			};
+
+			window.requestAnimationFrame(frame);
+		</script>
+	</body>
+</html>
