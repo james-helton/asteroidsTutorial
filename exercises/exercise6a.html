@@ -29,6 +29,8 @@
 				x += xSpeed;
 				y += ySpeed;
 				ySpeed += gravity;
+				// mouth = Math.abs(((x/25)%2.5)-1.25);
+				mouth = Math.abs(Math.sin(6*Math.PI*x/context.canvas.width));
 				if(y > context.canvas.height - radius) {
 					ySpeed *= -0.7;
 					y = context.canvas.height - radius;
@@ -42,7 +44,8 @@
 
 			function draw(ctx) {
 				drawGrid(ctx);
-				drawPacman(ctx, {x: x, y: y, r: radius, open: Math.abs(((x/25)%2.5)-1.25)})
+				drawPacman(ctx, {x: x, y: y, r: radius, open: mouth});
+
 			}
 
 			setInterval(frame, 1000.0/60.0); // 60fps
