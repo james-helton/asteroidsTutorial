@@ -36,9 +36,9 @@
 					y = context.canvas.height - radius;
 					xSpeed *= 0.95;
 				}
-				if(x <= 0 || x >= context.canvas.width - radius)
+				if(/*x <= 0 ||*/ x >= context.canvas.width + radius)
 				{
-					x = ((x + context.canvas.width) % context.canvas.width) + radius;
+					x = /*((x + context.canvas.width) % context.canvas.width)*/  -radius;
 				}
 			}
 
