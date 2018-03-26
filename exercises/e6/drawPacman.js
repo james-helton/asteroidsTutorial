@@ -1,4 +1,4 @@
-function drawPacman(ctx, {x, y, r, open}) {
+function drawPacman(ctx, {x=ctx.canvas.width/2, y=ctx.canvas.height/2, r=50, open=1}) {
 	ctx.save();
 	ctx.beginPath();
 	ctx.moveTo(x, y);
@@ -7,6 +7,6 @@ function drawPacman(ctx, {x, y, r, open}) {
 	ctx.fillStyle = 'yellow';
 	ctx.fill();
 	ctx.closePath();
-	ctx.stroke();
+	// ctx.stroke();
 	ctx.restore();
 }

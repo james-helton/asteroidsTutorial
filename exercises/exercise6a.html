@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Exercise 6a: Animation</title>
+		<link rel="stylesheet" href="styles/styles.css" />
+		<script src="js/drawGrid.js"></script>
+		<script src="e6/drawPacman.js"></script>
+	</head>
+	<body>
+		<h1>Animation</h1>
+		<canvas id='asteroids' width='300' height='300'></canvas>
+
+		<script>
+			let context = document.getElementById('asteroids').getContext('2d');
+			context.strokeStyle = 'white';
+			context.lineWidth = 1.5;
+
+			var x = 0, y = context.canvas.height / 5.0, radius = 20;
+			var xSpeed = 1.5, ySpeed = 0, gravity = 0.1;
+			let mouth = 0;
+
+			function frame() {
+				context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+				draw(context);
+				update();
+			}
+
+			function update() {
+				x += xSpeed;
+				y += ySpeed;
+				ySpeed += gravity;
+				if(y > context.canvas.height - radius) {
+					ySpeed *= -0.7;
+					y = context.canvas.height - radius;
+					xSpeed *= 0.95;
+				}
+				if(x <= 0 || x >= context.canvas.width - radius)
+				{
+					x = ((x + context.canvas.width) % context.canvas.width) + radius;
+				}
+			}
+
+			function draw(ctx) {
+				drawGrid(ctx);
+				drawPacman(ctx, {x: x, y: y, r: radius, open: Math.abs(((x/25)%2.5)-1.25)})
+			}
+
+			setInterval(frame, 1000.0/60.0); // 60fps
+		</script>
+	</body>
+</html>
